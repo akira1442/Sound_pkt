@@ -2,24 +2,26 @@ public class Projet {
     
     // Var d'instances
 
-    protected String nom;
-    protected String artiste;
-    protected String date;            // Format: dd/mm/yyyy
-    protected String lien;
-
+    private String nom;
+    private String artiste;
+    private String date;            // Format: dd/mm/yyyy
+    private String lien;
+    private int type;
+    
     // Constructeurs
 
-    public Projet(String nom, String artiste, String date, String lien){
+    public Projet(String nom, String artiste, String date, String lien, int type){
 
         this.nom = nom;
         this.artiste = artiste;
         this.date = date;
         this.lien = lien;
+        this.type = type;
     }
 
-    public Projet(String nom, String artiste, String date){
+    public Projet(String nom, String artiste, String date,int type){
 
-        this(nom, artiste, date, "");
+        this(nom, artiste, date, "", type);
     }
 
     // Methodes
@@ -49,5 +51,10 @@ public class Projet {
     public String getLien(){
 
         return this.lien;
+    }
+
+    public int getType(){
+
+        return this.type;
     }
 }
