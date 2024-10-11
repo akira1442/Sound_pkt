@@ -7,6 +7,10 @@ public class Projet {
     private String date;            // Format: dd/mm/yyyy
     private String lien;
     private int type;
+
+    // Var de Classe
+    
+    private static String[] tabType = {"Album", "Mixtape", "Ep"};
     
     // Constructeurs
 
@@ -28,7 +32,7 @@ public class Projet {
 
     public String toString(){
 
-        return "%s %s %s %s".formatted(this.nom, this.artiste, this.date, this.lien);
+        return "%s est un(e) %s %s %s %s".formatted(this.nom, tabType[this.type], this.artiste, this.date, this.lien);
     }
 
     // Accesseurs
