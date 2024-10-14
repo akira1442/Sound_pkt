@@ -1,7 +1,8 @@
+
 public class ListeProjet {
 
     // Var d'instance
 
-    private Projet[] waitingList;
-    private Projet[] ratingList;
+    private ArrayList<Projet> waitingList;
+    private ArrayList<Projet> ratingList;
 }
