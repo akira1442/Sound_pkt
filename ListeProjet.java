@@ -20,4 +20,13 @@ public class ListeProjet {
         this.ToListened = new ArrayList<>();
         this.Listened = new ArrayList<>();
     }
+
+    // Methodes static
+
+    public static Projet getElement(Projet p){
+
+        for (Projet e : ){
+
+        }
+    }
 }

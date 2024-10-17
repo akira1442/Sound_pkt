@@ -35,6 +35,11 @@ public class Projet {
         return "%s est un(e) %s %s %s %s".formatted(this.nom, tabType[this.type], this.artiste, this.date, this.lien);
     }
 
+    public boolean equal(Projet p){
+
+        return (this.nom == p.nom) && (this.artiste == p.artiste) && (this.date == p.date) && (this.type == p.type);
+    }
+
     // Accesseurs
 
     public String getNom(){
