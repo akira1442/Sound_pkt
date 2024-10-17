@@ -1,8 +1,23 @@
+import java.util.ArrayList;
 
 public class ListeProjet {
 
     // Var d'instance
 
-    private ArrayList<Projet> waitingList;
-    private ArrayList<Projet> ratingList;
+    private ArrayList<Projet> ToListened;
+    private ArrayList<Projet> Listened;
+
+    // Var de Classe
+
+    private static int nbToListened = 0;
+    private static int nbListened = 0;
+    private static int nbProjet = 0;
+
+    // Constructeurs
+
+    public ListeProjet(){
+        
+        this.ToListened = new ArrayList<>();
+        this.Listened = new ArrayList<>();
+    }
 }
