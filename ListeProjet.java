@@ -21,12 +21,22 @@ public class ListeProjet {
         this.Listened = new ArrayList<>();
     }
 
-    // Methodes static
+    // Methodes
 
-    public static Projet getElement(Projet p){
+    public Projet getElement(String nomAlbum, String nomArtiste){
 
-        for (Projet e : ){
-
+        for (Projet e : this.ToListened){
+            if ((e.getNom() == nomAlbum) && (e.getArtiste() == nomArtiste)){
+                return e;
+            }
         }
+
+        for (Projet e : this.Listened){
+            if ((e.getNom() == nomAlbum) && (e.getArtiste() == nomArtiste)){
+                return e;
+            }
+        }
+        System.out.println("Album not in lists");
+        return null;
     }
 }
