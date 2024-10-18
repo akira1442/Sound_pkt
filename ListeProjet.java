@@ -4,39 +4,45 @@ public class ListeProjet {
 
     // Var d'instance
 
-    private ArrayList<Projet> ToListened;
-    private ArrayList<Projet> Listened;
+    private final String nom;
+    private ArrayList<Projet> ListProjet;
 
     // Var de Classe
 
-    private static int nbToListened = 0;
-    private static int nbListened = 0;
     private static int nbProjet = 0;
+
 
     // Constructeurs
 
-    public ListeProjet(){
+    public ListeProjet(String nom){
         
-        this.ToListened = new ArrayList<>();
-        this.Listened = new ArrayList<>();
+        this.ListProjet = new ArrayList<>();
+        this.nom = nom;
+    }
+
+    public ListeProjet(){
+
+        this.ListProjet = new ArrayList<>();
+        this.nom = "List_Album";
     }
 
     // Methodes
 
     public Projet getElement(String nomAlbum, String nomArtiste){
 
-        for (Projet e : this.ToListened){
+        for (Projet e : this.ListProjet){
             if ((e.getNom() == nomAlbum) && (e.getArtiste() == nomArtiste)){
                 return e;
             }
         }
 
-        for (Projet e : this.Listened){
-            if ((e.getNom() == nomAlbum) && (e.getArtiste() == nomArtiste)){
-                return e;
-            }
-        }
         System.out.println("Album not in lists");
         return null;
+    }
+
+    // Accesseurs
+
+    public String getNom() {
+        return nom;
     }
 }
