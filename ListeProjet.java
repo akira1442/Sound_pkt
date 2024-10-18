@@ -28,6 +28,12 @@ public class ListeProjet {
 
     // Methodes
 
+    public void addProjet(Projet p){
+
+        this.ListProjet.add(p);
+        System.out.println("Project: %s added".formatted(p.toString()));
+    }
+
     public Projet getElement(String nomAlbum, String nomArtiste){
 
         for (Projet e : this.ListProjet){
