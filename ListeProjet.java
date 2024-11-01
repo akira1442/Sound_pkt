@@ -45,39 +45,14 @@ public class ListeProjet {
         return this.ListProjet.get(index);
     }
 
-    public void addProjetHead(Projet p){
-
-        /*Ajout en tête de la liste*/
+    public void addProjet(Projet p){
 
         this.ListProjet.add(p);
         nbProjet++;
         System.out.println("Project: %s added".formatted(p.toString()));
     }
 
-    public void suppProjetHead(Projet p){
-
-        /*Supprime en tête de la liste*/
-
-        if (this.ListProjet.remove(p)){
-            nbProjet--;
-            System.out.println("Project: %s deleted".formatted(p.toString()));
-            return;
-        }
-        System.out.println("Project: %s not in list".formatted(p.toString()));
-    }
-
-    public void addProjetTail(Projet p){
-
-        /*Ajout en queue de la liste*/
-
-        this.ListProjet.add(nbProjet,p);
-        nbProjet++;
-        System.out.println("Project: %s added".formatted(p.toString()));
-    }
-
-    public void suppProjetTail(Projet p){
-
-        /*Supprime en queue de la liste*/
+    public void suppProjet(Projet p){
 
         if (this.ListProjet.remove(p)){
             nbProjet--;
@@ -104,8 +79,9 @@ public class ListeProjet {
         if (this.ListProjet.remove(supp)){
             nbProjet--;
             System.out.println("Project: deleted");
+        }else {
+            System.out.println("Project not in list");
         }
-        System.out.println("Project not in list");
     }
 
     // Methodes Override

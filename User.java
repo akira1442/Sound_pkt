@@ -21,9 +21,14 @@ public class User {
 
     // Methodes
 
-    public String getUserName() {
+    public void addListeHead(ListeProjet lp){
 
-        return userName;
+        Data.add(lp);
+    }
+
+    public void addListeTail(ListeProjet lp){
+
+        Data.add(lp);
     }
 
     // Methodes de classe
@@ -35,14 +40,22 @@ public class User {
 
     // Methodes Override
 
+    @Override
     public String toString(){
 
-        String s = "";
+        String s = "Username: " + this.userName + "\n";
 
         for (ListeProjet lp : Data){
             s += lp.toString() + "\n";
         }
 
         return s;
+    }
+
+    // Accesseur
+
+    public String getUserName() {
+
+        return userName;
     }
 }
