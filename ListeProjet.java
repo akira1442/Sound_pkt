@@ -108,6 +108,20 @@ public class ListeProjet {
         System.out.println("Project not in list");
     }
 
+    // Methodes Override
+
+    @Override
+    public String toString(){
+
+        String s = "";
+
+        for (Projet p : this.ListProjet){
+            s += p.toString() + "\n";
+        }
+
+        return s;
+    }
+
     // Accesseurs
 
     public String getNom() {

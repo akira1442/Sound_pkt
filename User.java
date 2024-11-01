@@ -32,4 +32,17 @@ public class User {
 
         return nbListe;
     }
+
+    // Methodes Override
+
+    public String toString(){
+
+        String s = "";
+
+        for (ListeProjet lp : Data){
+            s += lp.toString() + "\n";
+        }
+
+        return s;
+    }
 }
