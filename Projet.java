@@ -10,7 +10,7 @@ public class Projet {
 
     // Var de Classe
     
-    private static String[] tabType = {"Album", "Mixtape", "Ep"};
+    private static final String[] tabType = {"Album", "Mixtape", "Ep"};
     
     // Constructeurs
 
@@ -28,15 +28,16 @@ public class Projet {
         this(nom, artiste, date, "", type);
     }
 
-    // Methodes
+    // Methodes overides
 
+    @Override
     public String toString(){
 
         return "%s est un(e) %s %s %s %s".formatted(this.nom, tabType[this.type], this.artiste, this.date, this.lien);
     }
 
     public boolean equal(Projet p){
-
+        // Exception not null
         return (this.nom == p.nom) && (this.artiste == p.artiste) && (this.date == p.date) && (this.type == p.type);
     }
 

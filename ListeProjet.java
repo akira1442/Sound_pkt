@@ -35,8 +35,7 @@ public class ListeProjet {
                 return e;
             }
         }
-
-        System.out.println("Album not in lists");
+        System.out.println("Album not in lists"); // Exception
         return null;
     }
 
@@ -52,6 +51,15 @@ public class ListeProjet {
         System.out.println("Project: %s added".formatted(p.toString()));
     }
 
+    public void addProjetIndex(Projet p, int i){
+
+        /*Ajout le projet à l'indice i*/
+
+        this.ListProjet.add(i,p);
+        nbProjet++;
+        System.out.println("Project: %s added".formatted(p.toString()));
+    }
+
     public void suppProjet(Projet p){
 
         if (this.ListProjet.remove(p)){
@@ -61,13 +69,16 @@ public class ListeProjet {
         System.out.println("Project: %s not in list".formatted(p.toString()));
     }
 
-    public void addProjetIndex(Projet p, int i){
+    public void suppProjet(String nomAlbum, String nomArtist){
 
-        /*Ajout le projet à l'indice i*/
+        Projet p = this.getProjet(nomAlbum, nomArtist);
 
-        this.ListProjet.add(i,p);
-        nbProjet++;
-        System.out.println("Project: %s added".formatted(p.toString()));
+        if (this.ListProjet.remove(p)){
+            nbProjet--;
+            System.out.println("Project: %s bt %s deleted".formatted(nomAlbum, nomArtist));
+        }
+
+        System.out.println("Project: %s not in list".formatted(nomAlbum, nomArtist));
     }
 
     public void suppProjetIndex(int i){
@@ -78,8 +89,9 @@ public class ListeProjet {
 
         if (this.ListProjet.remove(supp)){
             nbProjet--;
-            System.out.println("Project: deleted");
+            System.out.println("Project deleted");
         }else {
+            // Exception out of bounds
             System.out.println("Project not in list");
         }
     }
