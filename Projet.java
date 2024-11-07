@@ -2,11 +2,11 @@ public class Projet {
     
     // Var d'instances
 
-    private String nom;
-    private String artiste;
-    private String date;            // Format: dd/mm/yyyy
-    private String lien;
-    private int type;
+    private final String nom;
+    private final String artiste;
+    private final String date;            // Format: dd/mm/yyyy
+    private final String lien;
+    private final int type;
 
     // Var de Classe
     
@@ -36,8 +36,8 @@ public class Projet {
         return "%s est un(e) %s %s %s %s".formatted(this.nom, tabType[this.type], this.artiste, this.date, this.lien);
     }
 
-    public boolean equal(Projet p){
-        // Exception not null
+    public boolean equal(Projet p) throws ProjetNullException{
+        
         return (this.nom == p.nom) && (this.artiste == p.artiste) && (this.date == p.date) && (this.type == p.type);
     }
 
