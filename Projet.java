@@ -36,9 +36,16 @@ public class Projet {
         return "%s est un(e) %s %s %s %s".formatted(this.nom, tabType[this.type], this.artiste, this.date, this.lien);
     }
 
-    public boolean equal(Projet p) throws ProjetNullException{
-        
-        return (this.nom == p.nom) && (this.artiste == p.artiste) && (this.date == p.date) && (this.type == p.type);
+    public boolean equal(Object obj){
+
+        if (this == obj){
+            return true;
+        }
+        if (obj instanceof Projet){
+            Projet p = (Projet)obj;
+            return (this.nom == p.nom) && (this.artiste == p.artiste) && (this.date == p.date) && (this.type == p.type);
+        }
+        return false;
     }
 
     // Accesseurs

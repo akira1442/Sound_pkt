@@ -11,7 +11,6 @@ public class ListeProjet {
 
     private static int nbProjet = 0;
 
-
     // Constructeurs
 
     public ListeProjet(String nom){
@@ -114,5 +113,9 @@ public class ListeProjet {
 
     public String getNom() {
         return nom;
+    }
+
+    public static int getNbProjet(){
+        return nbProjet;
     }
 }
