@@ -38,9 +38,18 @@ public class ListeProjet {
         return null;
     }
 
-    public Projet getProjet(int index){
+    public Projet getProjet(int index) throws ProjetNullException, IndexOutOfBoundsException{
 
-        return this.ListProjet.get(index);
+        Projet p = this.ListProjet.get(index);
+
+        if (index > this.ListProjet.size()){
+            throw new IndexOutOfBoundsException("Index superieur a la taille de la liste"); 
+        }
+        else if (p == null){
+            throw new ProjetNullException("Projet non initialise");
+        }
+
+        return p;
     }
 
     public void addProjet(Projet p){
@@ -50,34 +59,45 @@ public class ListeProjet {
         System.out.println("Project: %s added".formatted(p.toString()));
     }
 
-    public void addProjetIndex(Projet p, int i){
+    public void addProjetIndex(Projet p, int i) throws IndexOutOfBoundsException{
 
-        /*Ajout le projet à l'indice i*/
+        /*Ajoute le projet à l'indice i*/
+
+        if (i > this.ListProjet.size()){
+            throw new IndexOutOfBoundsException("Index superieur a la taille de la liste");
+        }
 
         this.ListProjet.add(i,p);
         nbProjet++;
         System.out.println("Project: %s added".formatted(p.toString()));
     }
 
-    public void suppProjet(Projet p){
+    public void suppProjet(Projet p) throws ProjetNullException, NotInListeExeption{
 
-        if (this.ListProjet.remove(p)){
+        if (p == null){
+            throw new ProjetNullException("Projet non initialise");
+        }else if (this.ListProjet.remove(p)){
             nbProjet--;
             System.out.println("Project: %s deleted".formatted(p.toString()));
+        }else{
+            System.out.println("Project: %s not in list".formatted(p.toString()));
+            throw new NotInListeExeption("Projet %s n'est pas dans la liste".formatted(p.toString()));
         }
-        System.out.println("Project: %s not in list".formatted(p.toString()));
     }
 
-    public void suppProjet(String nomAlbum, String nomArtist){
+    public void suppProjet(String nomAlbum, String nomArtist) throws NotInListeExeption, ProjetNullException{
 
         Projet p = this.getProjet(nomAlbum, nomArtist);
 
-        if (this.ListProjet.remove(p)){
+        if (p == null){
+            throw new ProjetNullException("Projet non initialise");
+        }if (this.ListProjet.remove(p)){
             nbProjet--;
             System.out.println("Project: %s bt %s deleted".formatted(nomAlbum, nomArtist));
+        }else{
+            System.out.println("Project: %s not in list".formatted(p.toString()));
+            throw new NotInListeExeption("Projet %s n'est pas dans la liste".formatted(p.toString()));
         }
-
-        System.out.println("Project: %s not in list".formatted(nomAlbum, nomArtist));
     }
 
     public void suppProjetIndex(int i){
