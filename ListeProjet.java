@@ -5,37 +5,37 @@ public class ListeProjet extends ArrayList<Projet>{
     // Var d'instance
 
     private final String nom;
-    //private ArrayList<Projet> ListProjet;
-
-    // Var de Classe
-
-    private static int nbProjet = 0;
+    private int nbProjet;
 
     // Constructeurs
 
     public ListeProjet(String nom){
         
-        //this.ListProjet = new ArrayList<>();
         this.nom = nom;
+        this.nbProjet = 0;
     }
 
     public ListeProjet(){
 
-        //this.ListProjet = new ArrayList<>();
-        this.nom = "List_Album";
+        this("Liste_Projet");
+    }
+
+    public ListeProjet(ListeProjet lp){
+
+        this.nom = lp.nom;
+        this.nbProjet = lp.nbProjet;
     }
 
     // Methodes
 
-    public Projet getProjet(String nomAlbum, String nomArtiste){
+    public Projet getProjet(String nomAlbum, String nomArtiste) throws NotInListeExeption{
 
         for (Projet e : this){
             if ((e.getNom() == nomAlbum) && (e.getArtiste() == nomArtiste)){
                 return e;
             }
         }
-        System.out.println("Album not in lists"); // Exception
-        return null;
+        throw new NotInListeExeption("Album not in lists"); // Exception
     }
 
     public Projet getProjet(int index) throws ProjetNullException, IndexOutOfBoundsException{
@@ -55,7 +55,7 @@ public class ListeProjet extends ArrayList<Projet>{
     public void addProjet(Projet p){
 
         this.add(p);
-        nbProjet++;
+        this.nbProjet++;
         System.out.println("Project: %s added".formatted(p.toString()));
     }
 
@@ -68,7 +68,7 @@ public class ListeProjet extends ArrayList<Projet>{
         }
 
         this.add(i,p);
-        nbProjet++;
+        this.nbProjet++;
         System.out.println("Project: %s added".formatted(p.toString()));
     }
 
@@ -77,7 +77,7 @@ public class ListeProjet extends ArrayList<Projet>{
         if (p == null){
             throw new ProjetNullException("Projet non initialise");
         }else if (this.remove(p)){
-            nbProjet--;
+            this.nbProjet--;
             System.out.println("Project: %s deleted".formatted(p.toString()));
         }else{
             System.out.println("Project: %s not in list".formatted(p.toString()));
@@ -92,7 +92,7 @@ public class ListeProjet extends ArrayList<Projet>{
         if (p == null){
             throw new ProjetNullException("Projet non initialise");
         }if (this.remove(p)){
-            nbProjet--;
+            this.nbProjet--;
             System.out.println("Project: %s bt %s deleted".formatted(nomAlbum, nomArtist));
         }else{
             System.out.println("Project: %s not in list".formatted(p.toString()));
@@ -126,7 +126,7 @@ public class ListeProjet extends ArrayList<Projet>{
             s += p.toString() + "\n";
         }
 
-        return s;
+        return s + "Possède " + this.nbProjet + " projet(s)";
     }
 
     // Accesseurs
@@ -135,7 +135,7 @@ public class ListeProjet extends ArrayList<Projet>{
         return nom;
     }
 
-    public static int getNbProjet(){
-        return nbProjet;
+    public int getNbProjet(){
+        return this.nbProjet;
     }
 }

@@ -21,14 +21,33 @@ public class User {
 
     // Methodes
 
-    public void addListeHead(ListeProjet lp){
+    public void addListe(ListeProjet lp){
 
+        if (this.inData(lp.getNom())){
+            
+        }
         Data.add(lp);
+        nbListe++;
     }
 
-    public void addListeTail(ListeProjet lp){
+    public ListeProjet inData(ListeProjet lp){
 
-        Data.add(lp);
+        for (ListeProjet l : this.Data){
+            if (l.getNom() == lp.getNom()){
+                return l;
+            }
+        }
+        return null;
+    }
+
+    public boolean inData(String nom){
+        
+        for (ListeProjet l : this.Data){
+            if (l.getNom() == nom){
+                return true;
+            }
+        }
+        return false;
     }
 
     // Methodes de classe
