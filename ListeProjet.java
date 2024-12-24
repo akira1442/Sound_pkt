@@ -1,11 +1,11 @@
 import java.util.ArrayList;
 
-public class ListeProjet {
+public class ListeProjet extends ArrayList<Projet>{
 
     // Var d'instance
 
     private final String nom;
-    private ArrayList<Projet> ListProjet;
+    //private ArrayList<Projet> ListProjet;
 
     // Var de Classe
 
@@ -15,13 +15,13 @@ public class ListeProjet {
 
     public ListeProjet(String nom){
         
-        this.ListProjet = new ArrayList<>();
+        //this.ListProjet = new ArrayList<>();
         this.nom = nom;
     }
 
     public ListeProjet(){
 
-        this.ListProjet = new ArrayList<>();
+        //this.ListProjet = new ArrayList<>();
         this.nom = "List_Album";
     }
 
@@ -29,7 +29,7 @@ public class ListeProjet {
 
     public Projet getProjet(String nomAlbum, String nomArtiste){
 
-        for (Projet e : this.ListProjet){
+        for (Projet e : this){
             if ((e.getNom() == nomAlbum) && (e.getArtiste() == nomArtiste)){
                 return e;
             }
@@ -40,9 +40,9 @@ public class ListeProjet {
 
     public Projet getProjet(int index) throws ProjetNullException, IndexOutOfBoundsException{
 
-        Projet p = this.ListProjet.get(index);
+        Projet p = this.get(index);
 
-        if (index > this.ListProjet.size()){
+        if (index > this.size()){
             throw new IndexOutOfBoundsException("Index superieur a la taille de la liste"); 
         }
         else if (p == null){
@@ -54,7 +54,7 @@ public class ListeProjet {
 
     public void addProjet(Projet p){
 
-        this.ListProjet.add(p);
+        this.add(p);
         nbProjet++;
         System.out.println("Project: %s added".formatted(p.toString()));
     }
@@ -63,11 +63,11 @@ public class ListeProjet {
 
         /*Ajoute le projet à l'indice i*/
 
-        if (i > this.ListProjet.size()){
+        if (i > this.size()){
             throw new IndexOutOfBoundsException("Index superieur a la taille de la liste");
         }
 
-        this.ListProjet.add(i,p);
+        this.add(i,p);
         nbProjet++;
         System.out.println("Project: %s added".formatted(p.toString()));
     }
@@ -76,7 +76,7 @@ public class ListeProjet {
 
         if (p == null){
             throw new ProjetNullException("Projet non initialise");
-        }else if (this.ListProjet.remove(p)){
+        }else if (this.remove(p)){
             nbProjet--;
             System.out.println("Project: %s deleted".formatted(p.toString()));
         }else{
@@ -91,7 +91,7 @@ public class ListeProjet {
 
         if (p == null){
             throw new ProjetNullException("Projet non initialise");
-        }if (this.ListProjet.remove(p)){
+        }if (this.remove(p)){
             nbProjet--;
             System.out.println("Project: %s bt %s deleted".formatted(nomAlbum, nomArtist));
         }else{
@@ -104,9 +104,9 @@ public class ListeProjet {
 
         /*Supprime le projet à l'indice i*/
 
-        Projet supp = this.ListProjet.get(i);
+        Projet supp = this.get(i);
 
-        if (this.ListProjet.remove(supp)){
+        if (this.remove(supp)){
             nbProjet--;
             System.out.println("Project deleted");
         }else {
@@ -122,7 +122,7 @@ public class ListeProjet {
 
         String s = "";
 
-        for (Projet p : this.ListProjet){
+        for (Projet p : this){
             s += p.toString() + "\n";
         }
 
