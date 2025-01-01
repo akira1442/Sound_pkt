@@ -6,10 +6,7 @@ public class User {
 
     private final String userName;
     private ArrayList<ListeProjet> Data;
-
-    // Var de classe
-
-    private static int nbListe = 0;
+    private int nbListe;
 
     // Constructeurs
 
@@ -17,17 +14,23 @@ public class User {
 
         this.userName = userName;
         this.Data = new ArrayList<>();
+        this.nbListe = 0;
     }
 
     // Methodes
 
     public void addListe(ListeProjet lp){
 
-        if (this.inData(lp.getNom())){
-            
+        try{
+            this.inData(lp.getNom());
         }
-        Data.add(lp);
-        nbListe++;
+        
+        catch (NotInListeExeption e){
+            this.addListe(lp);
+            this.nbListe++;
+        }
+        
+
     }
 
     public ListeProjet inData(ListeProjet lp){
@@ -40,21 +43,14 @@ public class User {
         return null;
     }
 
-    public boolean inData(String nom){
+    public boolean inData(String nom) throws NotInListeExeption{
         
         for (ListeProjet l : this.Data){
             if (l.getNom() == nom){
                 return true;
             }
         }
-        return false;
-    }
-
-    // Methodes de classe
-
-    public static int getNbListe() {
-
-        return nbListe;
+        throw new NotInListeExeption(nom + " n'est pas dans la liste");
     }
 
     // Methodes Override
@@ -76,5 +72,10 @@ public class User {
     public String getUserName() {
 
         return userName;
+    }
+
+    public int getNbListe() {
+
+        return this.nbListe;
     }
 }

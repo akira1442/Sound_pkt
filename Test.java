@@ -14,8 +14,8 @@ public class Test {
         lp1.addProjet(p1);
         lp1.addProjet(p2);
         lp2.addProjet(p3);
-        u.addListeHead(lp1);
-        u.addListeTail(lp2);
+        u.addListe(lp1);
+        u.addListe(lp2);
 
         System.out.print(u.toString());
         lp1.suppProjetIndex(1);
