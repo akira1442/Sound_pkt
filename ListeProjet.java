@@ -35,7 +35,7 @@ public class ListeProjet extends ArrayList<Projet>{
                 return e;
             }
         }
-        throw new NotInListeExeption("Album not in lists"); // Exception
+        throw new NotInListeExeption("Album not in lists");
     }
 
     public Projet getProjet(int index) throws ProjetNullException, IndexOutOfBoundsException{
@@ -97,21 +97,6 @@ public class ListeProjet extends ArrayList<Projet>{
         }else{
             System.out.println("Project: %s not in list".formatted(p.toString()));
             throw new NotInListeExeption("Projet %s n'est pas dans la liste".formatted(p.toString()));
-        }
-    }
-
-    public void suppProjetIndex(int i){
-
-        /*Supprime le projet à l'indice i*/
-
-        Projet supp = this.get(i);
-
-        if (this.remove(supp)){
-            nbProjet--;
-            System.out.println("Project deleted");
-        }else {
-            // Exception out of bounds
-            System.out.println("Project not in list");
         }
     }
 

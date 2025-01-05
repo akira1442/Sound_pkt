@@ -18,7 +18,6 @@ public class Test {
         u.addListe(lp2);
 
         System.out.print(u.toString());
-        lp1.suppProjetIndex(1);
         System.out.print(u.toString());
     }
 }

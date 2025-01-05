@@ -29,8 +29,6 @@ public class User {
             Data.add(lp);
             this.nbListe++;
         }
-        
-
     }
 
     public ListeProjet inData(ListeProjet lp){
