@@ -26,7 +26,7 @@ public class User {
         }
         
         catch (NotInListeExeption e){
-            this.addListe(lp);
+            Data.add(lp);
             this.nbListe++;
         }
         
